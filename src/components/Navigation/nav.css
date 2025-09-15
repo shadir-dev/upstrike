@@ -1,0 +1,139 @@
+.footer {
+  background: #0b0c10; /* dark black */
+  color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem 1rem 1rem;
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+  fill: #1f2833; /* dark blue wave */
+}
+
+.footer-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.footer-section.compact {
+  font-size: 0.9rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #66fcf1; /* bright blue */
+  margin-bottom: 0.5rem;
+}
+
+.footer-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.social-links a {
+  margin-right: 0.5rem;
+  color: #66fcf1;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #66fcf1;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-links a {
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #66fcf1;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.review-textarea,
+.review-input {
+  width: 100%;
+  padding: 0.35rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.85rem;
+}
+
+.review-textarea {
+  resize: none;
+}
+
+.rating-stars button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #66fcf1;
+  cursor: pointer;
+}
+
+.rating-stars button.active,
+.rating-stars button.hover {
+  color: #ffffff;
+}
+
+.btn-primary {
+  background: #66fcf1;
+  color: #0b0c10;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #45a29e;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  border-top: 1px solid #1f2833;
+  padding-top: 0.75rem;
+  margin-top: 1rem;
+}
+
+.footer-bottom-links a {
+  margin-left: 1rem;
+  color: #66fcf1;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+  color: #ffffff;
+}
