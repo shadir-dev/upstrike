@@ -18,7 +18,7 @@ const Header = () => {
     if (window.innerWidth <= 968) setIsServicesOpen(prev => !prev);
   };
 
-  // close dropdown on outside click
+  // Close dropdown on outside click
   useEffect(() => {
     const handler = e => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -29,14 +29,14 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  // close menu when link clicked
+  // Close menu when link clicked
   const closeMenu = () => {
     setIsMenuOpen(false);
     setIsServicesOpen(false);
     document.body.style.overflow = "auto";
   };
 
-  // reset on resize
+  // Reset on resize
   useEffect(() => {
     const resizeHandler = () => {
       if (window.innerWidth > 968) {
@@ -62,6 +62,7 @@ const Header = () => {
           className={`menu-toggle ${isMenuOpen ? "active" : ""}`}
           onClick={toggleMenu}
           aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
         >
           <span />
           <span />
@@ -69,7 +70,7 @@ const Header = () => {
         </button>
 
         {/* Navigation */}
-        <nav className={`nav ${isMenuOpen ? "show" : ""}`}>
+        <nav className={`nav ${isMenuOpen ? "show" : ""}`} aria-hidden={!isMenuOpen}>
           <a href="/home" onClick={closeMenu}>Home</a>
           <a href="/about" onClick={closeMenu}>About</a>
 
@@ -78,6 +79,7 @@ const Header = () => {
               className="dropdown-trigger"
               onClick={toggleServices}
               onMouseEnter={() => window.innerWidth > 968 && setIsServicesOpen(true)}
+              aria-expanded={isServicesOpen}
             >
               Services <span className="arrow">▾</span>
             </button>
