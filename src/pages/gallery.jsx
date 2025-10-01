@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./gallery.css"
+import "./gallery.css";
+
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [galleryItems, setGalleryItems] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // New state for fullscreen modal
   const [fullscreenItem, setFullscreenItem] = useState(null);
 
   // Fetch data from backend
@@ -39,20 +38,23 @@ const Gallery = () => {
 
   return (
     <div className="gallery-page">
+      {/* Hero Section */}
       <section className="gallery-hero">
         <div className="container">
-          <h1>Our Creative Portfolio</h1>
-          <p>Explore our diverse range of branding and design projects</p>
+          <h1 className="hero-title">Our Gallery</h1>
+          <p className="hero-subtitle">Explore our diverse range of branding and design projects</p>
         </div>
       </section>
 
+      {/* Gallery Content */}
       <section className="gallery-content">
         <div className="container">
           <div className="gallery-header">
-            <h2>Featured Work</h2>
-            <p>Browse through our collection of branding, logos, flyers, and posters</p>
+            <h2>Featured Projects</h2>
+            <p>Browse through our collection of creative work and design solutions</p>
           </div>
 
+          {/* Category Filters */}
           <div className="category-filters">
             {categories.map((category) => (
               <button
@@ -65,119 +67,103 @@ const Gallery = () => {
             ))}
           </div>
 
+          {/* Gallery Grid */}
           {loading ? (
-            <p>Loading gallery...</p>
+            <div className="loading-container">
+              <div className="loading-spinner"></div>
+              <p>Loading gallery...</p>
+            </div>
           ) : (
             <div className="gallery-grid">
-              {filteredItems.map((item) => (
-                <div key={item.id} className="gallery-item">
-                  <div className="item-image">
+              {filteredItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="gallery-card"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="card-image">
                     <img
                       src={item.file_url}
                       alt={item.title}
-                      style={{ width: "100%", height: "auto", borderRadius: "8px" }}
+                      loading="lazy"
                     />
-                    <div className="item-overlay">
-                      <button
-                        className="view-btn"
-                        onClick={() => setFullscreenItem(item)}
-                      >
-                        View Project
-                      </button>
+                    <div className="card-overlay">
+                      <div className="overlay-content">
+                        <button
+                          className="view-btn"
+                          onClick={() => setFullscreenItem(item)}
+                        >
+                          <span>👁️</span> Quick View
+                        </button>
+                        <button className="expand-btn" onClick={() => setFullscreenItem(item)}>
+                          ⤢
+                        </button>
+                      </div>
                     </div>
+                    <div className="category-badge">{item.category}</div>
                   </div>
-                  <div className="item-info">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <span className="item-category">{item.category}</span>
+                  <div className="card-content">
+                    <h3 className="card-title">{item.title}</h3>
+                    <p className="card-description">{item.description}</p>
+                    <div className="card-footer">
+                      <span className="item-category">{item.category}</span>
+                      <span className="view-indicator">Click to view</span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           )}
+
+          {/* Empty State */}
+          {!loading && filteredItems.length === 0 && (
+            <div className="empty-state">
+              <div className="empty-icon">📷</div>
+              <h3>No projects found</h3>
+              <p>No projects available in this category yet.</p>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ===== Fullscreen Modal ===== */}
+      {/* Fullscreen Modal */}
       {fullscreenItem && (
         <div className="fullscreen-overlay" onClick={() => setFullscreenItem(null)}>
           <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setFullscreenItem(null)}>✖</button>
-            <img
-              src={fullscreenItem.file_url}
-              alt={fullscreenItem.title}
-              className="fullscreen-image"
-            />
-            <h3>{fullscreenItem.title}</h3>
-            <p>{fullscreenItem.description}</p>
+            <button className="close-btn" onClick={() => setFullscreenItem(null)}>
+              ✕
+            </button>
+            <div className="modal-image-container">
+              <img
+                src={fullscreenItem.file_url}
+                alt={fullscreenItem.title}
+                className="fullscreen-image"
+              />
+            </div>
+            <div className="modal-info">
+              <h3>{fullscreenItem.title}</h3>
+              <p>{fullscreenItem.description}</p>
+              <span className="modal-category">{fullscreenItem.category}</span>
+            </div>
           </div>
         </div>
       )}
 
+      {/* CTA Section */}
       <section className="gallery-cta">
         <div className="container">
           <h2>Ready to Create Something Amazing?</h2>
           <p>Let's discuss your branding and design needs</p>
-      <button><a
-  href="https://wa.me/254743187210"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="btn"
->
-  Start a Project
-</a></button>
-
+          <a
+            href="https://wa.me/254743187210"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            <span> Start a Project</span>
+          </a>
         </div>
       </section>
-
-      {/* ===== Modal Styles ===== */}
-      <style jsx>{`
-        .fullscreen-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0,0,0,0.9);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-        }
-
-        .fullscreen-content {
-          position: relative;
-          text-align: center;
-          max-width: 90%;
-          max-height: 90%;
-          color: #fff;
-        }
-
-        .fullscreen-image {
-          max-width: 100%;
-          max-height: 80vh;
-          margin-bottom: 15px;
-          border-radius: 10px;
-          box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-
-        .close-btn {
-          position: absolute;
-          top: -10px;
-          right: -10px;
-          background: #ff4757;
-          color: #fff;
-          border: none;
-          font-size: 18px;
-          padding: 8px 12px;
-          border-radius: 50%;
-          cursor: pointer;
-        }
-
-        .close-btn:hover {
-          background: #e84118;
-        }
-      `}</style>
     </div>
   );
 };

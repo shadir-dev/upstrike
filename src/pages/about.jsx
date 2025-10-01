@@ -72,7 +72,7 @@ const About = () => {
       <section className="mission-vision">
         <div className="mv-grid">
           <div className="mv-card card-flow" data-aos="fade-up">
-            <div className="card-icon">🎯</div>
+            <div className="card-icon"></div>
             <h3>Our Mission</h3>
             <div className="divider"></div>
             <p>
@@ -83,7 +83,7 @@ const About = () => {
           </div>
 
           <div className="mv-card card-flow" data-aos="fade-up">
-            <div className="card-icon">👁️</div>
+            <div className="card-icon"></div>
             <h3>Our Vision</h3>
             <div className="divider"></div>
             <p>
@@ -97,7 +97,7 @@ const About = () => {
               <img src={coreImg} alt="Core Values" />
             </div>
             <div className="text">
-              <div className="card-icon">💎</div>
+              <div className="card-icon"></div>
               <h3>Core Values</h3>
               <div className="divider"></div>
               <ul>
@@ -112,7 +112,7 @@ const About = () => {
 
           <div className="mv-card split reverse card-flow" data-aos="fade-left">
             <div className="text">
-              <div className="card-icon">🚀</div>
+              <div className="card-icon"></div>
               <h3>Our Services</h3>
               <div className="divider"></div>
               <ul>

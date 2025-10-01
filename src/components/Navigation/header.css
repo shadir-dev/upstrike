@@ -31,12 +31,28 @@ body {
   position: relative;
 }
 
-/* Logo */
+/* Logo - COMPLETELY REMOVE ALL PSEUDO-ELEMENTS */
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   z-index: 1001;
+  position: relative;
+}
+
+/* FIX: Remove ::before pseudo-element that's creating the light strike */
+.logo::before {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.logo::after {
+  display: none !important;
+  content: none !important;
 }
 
 .logo img {
@@ -57,7 +73,7 @@ body {
   gap: 25px;
 }
 
-.nav a, .dropdown-trigger {
+.nav a:not(.logo), .dropdown-trigger {
   color: #f0f0f0;
   text-decoration: none;
   font-weight: 500;
@@ -72,12 +88,12 @@ body {
   font-family: inherit;
 }
 
-.nav a:hover, .dropdown-trigger:hover {
+.nav a:not(.logo):hover, .dropdown-trigger:hover {
   color: #4a8cff;
   background: rgba(74, 140, 255, 0.1);
 }
 
-.nav a::after, .dropdown-trigger::after {
+.nav a:not(.logo)::after, .dropdown-trigger::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -89,7 +105,7 @@ body {
   transform: translateX(-50%);
 }
 
-.nav a:hover::after, .dropdown-trigger:hover::after {
+.nav a:not(.logo):hover::after, .dropdown-trigger:hover::after {
   width: 70%;
 }
 

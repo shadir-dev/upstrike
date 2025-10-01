@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./nav.css";
 
 import logo from "../../assets/image.png"; // <-- confirm the path
@@ -12,6 +12,13 @@ const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hoverRating, setHoverRating] = useState(0);
+
+  const navigate = useNavigate();
+
+  const handleNavClick = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 🔥 scrolls to top
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,22 +71,54 @@ const Footer = () => {
 
       <div className="footer-content-grid">
         {/* Company Info */}
-        <div className="footer-section compact"><h3 className="footer-logo">
-  
-          <a href="/home" className="logo">
-            <img src={logo} alt="Logo" />
-          </a>
-  
-</h3>
+        <div className="footer-section compact">
+          <h3 className="footer-logo">
+            <Link to="/home" onClick={() => handleNavClick("/home")} className="logo">
+              <img src={logo} alt="Logo" />
+            </Link>
+          </h3>
 
           <p className="footer-description">
             Transforming businesses through innovative solutions and exceptional service.
           </p>
           <div className="social-links">
-            <a href="#" aria-label="Facebook" className="social-link"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter" className="social-link"><i className="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram" className="social-link"><i className="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn" className="social-link"><i className="fab fa-linkedin-in"></i></a>
+  <a
+    href="https://facebook.com/yourpage"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+    className="social-link"
+  >
+    <i className="fab fa-facebook-f"></i>
+  </a>
+  <a
+    href="https://twitter.com/yourprofile"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Twitter"
+    className="social-link"
+  >
+    <i className="fab fa-twitter"></i>
+  </a>
+  <a
+    href="https://instagram.com/yourprofile"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="social-link"
+  >
+    <i className="fab fa-instagram"></i>
+  </a>
+  <a
+    href="https://linkedin.com/in/yourprofile"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    className="social-link"
+  >
+    <i className="fab fa-linkedin-in"></i>
+  </a>
+
           </div>
         </div>
 
@@ -87,17 +126,16 @@ const Footer = () => {
         <div className="footer-section compact">
           <h4 className="footer-heading">Quick Links</h4>
           <ul className="footer-links">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
-            <li><Link to="/clientelle">Clientele</Link></li>
-            <li><Link to="/contacts">Contact</Link></li>
+            <li><button onClick={() => handleNavClick("/home")} className="footer-btn">Home</button></li>
+            <li><button onClick={() => handleNavClick("/about")} className="footer-btn">About Us</button></li>
+            <li><button onClick={() => handleNavClick("/services")} className="footer-btn">Services</button></li>
+            <li><button onClick={() => handleNavClick("/gallery")} className="footer-btn">Gallery</button></li>
+            <li><button onClick={() => handleNavClick("/clientelle")} className="footer-btn">Clientele</button></li>
+            <li><button onClick={() => handleNavClick("/contacts")} className="footer-btn">Contact</button></li>
           </ul>
         </div>
 
-
-        {/* Compact Rating Form */}
+        {/* Rating Form */}
         <div className="footer-section compact">
           <h4 className="footer-heading">Rate Us</h4>
           {submitted ? (
@@ -140,8 +178,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Upstrike. All rights reserved.</p>
         <div className="footer-bottom-links">
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/terms">Terms of Service</Link>
+        
         </div>
       </div>
     </footer>
