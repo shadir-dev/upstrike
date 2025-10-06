@@ -20,7 +20,7 @@ function AdminLogin() {
     }
 
     try {
-      const response = await fetch("http://localhost/cliantelle_projects/backend/login.php", {
+      const response = await fetch("https://upstrive.xo.je/backend/login.php", {
         method: "POST",
         body: formData,
          credentials: "include",
