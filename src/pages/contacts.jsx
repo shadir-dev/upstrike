@@ -21,7 +21,7 @@ const Contacts = () => {
 
     try {
       const res = await fetch(
-        "http://localhost/cliantelle_projects/backend/messages.php",
+        "https://upstrive.xo.je/backend/messages.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
