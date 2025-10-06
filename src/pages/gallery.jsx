@@ -11,7 +11,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const res = await fetch("http://localhost/cliantelle_projects/backend/gallery.php");
+        const res = await fetch("https://upstrive.xo.je/backend/gallery.php");
         const data = await res.json();
 
         if (data.success) {
