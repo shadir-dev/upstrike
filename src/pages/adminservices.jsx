@@ -16,7 +16,7 @@ const AdminServices = () => {
 
   const fetchServices = async () => {
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/services.php");
+      const res = await fetch("https://upstrive.xo.je/backend/services.php");
       const data = await res.json();
       setServices(data);
     } catch (err) {
@@ -36,7 +36,7 @@ const AdminServices = () => {
     formData.append("image", image);
 
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/services.php", {
+      const res = await fetch("https://upstrive.xo.je/backend/services.php", {
         method: "POST",
         body: formData,
       });
@@ -60,7 +60,7 @@ const AdminServices = () => {
     if (!window.confirm("Are you sure you want to delete this service?")) return;
 
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/services.php", {
+      const res = await fetch("https://upstrive.xo.je/backend/services.php", {
         method: "DELETE",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `id=${id}`, // ✅ send id in form format
@@ -161,7 +161,7 @@ const AdminServices = () => {
               }}
             >
               <img
-                src={`http://localhost/cliantelle_projects/backend/${s.image}`}
+                src={`https://upstrive.xo.jes/backend/${s.image}`}
                 alt={s.title}
                 width="120"
                 style={{ borderRadius: "5px" }}
