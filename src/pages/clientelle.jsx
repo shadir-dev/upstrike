@@ -12,14 +12,14 @@ const Clientelle = () => {
   ];
 
   useEffect(() => {
-    fetch("http://localhost/cliantelle_projects/backend/get_client.php?action=get")
+    fetch("https://upstrive.xo.je/backend/get_client.php?action=get")
       .then((r) => r.json())
       .then((data) =>
         setClients(
           data.map((c) => ({
             ...c,
             logo_url: c.logo
-              ? `http://localhost/cliantelle_projects/backend/${c.logo}`
+              ? `https://upstrive.xo.je/backend/${c.logo}`
               : null,
           }))
         )
@@ -28,7 +28,7 @@ const Clientelle = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost/cliantelle_projects/backend/home.php")
+    fetch("https://upstrive.xo.je/backend/home.php")
       .then((r) => r.json())
       .then((d) => d.testimonials && setTestimonials(d.testimonials))
       .catch((e) => console.error("Error fetching testimonials:", e));
