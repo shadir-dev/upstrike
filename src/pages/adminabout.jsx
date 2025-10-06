@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   }, []);
 
   const loadData = () => {
-    fetch("http://localhost/cliantelle_projects/backend/admin.php")
+    fetch("https://upstrive.xo.je/backend/admin.php")
       .then((res) => res.json())
       .then((data) => {
         setTeam(data.team);
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
     const formData = new FormData();
     formData.append("profile", profileFile);
 
-    fetch("http://localhost/cliantelle_projects/backend/upload_profile.php", {
+    fetch("https://upstrive.xo.jes/backend/upload_profile.php", {
       method: "POST",
       body: formData,
     })
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
       formData.append(key, newMember[key])
     );
 
-    fetch("http://localhost/cliantelle_projects/backend/team.php?action=add", {
+    fetch("https://upstrive.xo.je/backend/team.php?action=add", {
       method: "POST",
       body: formData,
     })
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
     const formData = new FormData();
     formData.append("id", id);
 
-    fetch("http://localhost/cliantelle_projects/backend/team.php?action=delete", {
+    fetch("https://upstrive.xo.je/backend/team.php?action=delete", {
       method: "POST",
       body: formData,
     })
@@ -95,7 +95,7 @@ const AdminDashboard = () => {
     formData.append("logo", newClient.logo);
     formData.append("industry", newClient.industry || "Technology");
 
-    fetch("http://localhost/cliantelle_projects/backend/clients.php?action=add", {
+    fetch("https://upstrive.xo.je/backend/clients.php?action=add", {
       method: "POST",
       body: formData,
     })
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
     const formData = new FormData();
     formData.append("id", id);
 
-    fetch("http://localhost/cliantelle_projects/backend/clients.php?action=delete", {
+    fetch("https://upstrive.xo.je/backend/clients.php?action=delete", {
       method: "POST",
       body: formData,
     })
@@ -246,7 +246,7 @@ const AdminDashboard = () => {
               </p>
               {c.logo && (
                 <img
-                  src={`http://localhost/cliantelle_projects/backend/${c.logo}`}
+                  src={`https://upstrive.xo.je/backend/${c.logo}`}
                   alt={c.name}
                   width="80"
                 />
@@ -264,7 +264,7 @@ const AdminDashboard = () => {
           <p>
             Current:{" "}
             <a
-              href={`http://localhost/cliantelle_projects/backend/${profile.file_path}`}
+              href={`https://upstrive.xo.jes/backend/${profile.file_path}`}
               target="_blank"
               rel="noreferrer"
             >
