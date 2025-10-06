@@ -25,7 +25,7 @@ const Home = () => {
   ]);
 
   useEffect(() => {
-    fetch("http://localhost/cliantelle_projects/backend/home.php")
+    fetch("https://upstrive.xo.je/backend/home.php")
       .then((res) => res.json())
       .then((data) => {
         setTestimonials(data.testimonials || []);
