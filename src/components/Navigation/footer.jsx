@@ -24,7 +24,7 @@ const Footer = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/home.php", {
+      const res = await fetch("https://upstrive.xo.je/backend/home.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
