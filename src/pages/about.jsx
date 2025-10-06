@@ -16,7 +16,7 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost/cliantelle_projects/backend/about.php")
+    fetch("https://upstrive.xo.je/backend/about.php")
       .then((res) => res.json())
       .then((data) => {
         setTeamMembers(data.team || []);
