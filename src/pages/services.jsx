@@ -8,7 +8,7 @@ const Services = () => {
 
   useEffect(() => {
     const fetchServices = async () => {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/services.php");
+      const res = await fetch("https://upstrive.xo.je/backend/services.php");
       const data = await res.json();
       setServices(data);
     };
@@ -126,7 +126,7 @@ const Services = () => {
           <div className="services-grid">
             {filteredServices.length > 0 ? (
               filteredServices.map((service) => {
-                const imageUrl = `http://localhost/cliantelle_projects/backend/${service.image}`;
+                const imageUrl = `https://upstrive.xo.je/backend/${service.image}`;
                 return (
                   <div key={service.id} className="service-card">
                     <div 
