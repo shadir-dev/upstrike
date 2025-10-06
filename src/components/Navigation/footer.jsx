@@ -176,7 +176,7 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Upstrike. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Upstrive. All rights reserved.</p>
         <div className="footer-bottom-links">
         
         </div>
