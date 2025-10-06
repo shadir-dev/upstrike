@@ -6,7 +6,7 @@ const AdminHome = () => {
   useEffect(() => {
   const fetchMessages = async () => {
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/messages.php", {
+      const res = await fetch("https://upstrive.xo.je/backend/messages.php", {
         method: "GET",
         credentials: "include",
       });
