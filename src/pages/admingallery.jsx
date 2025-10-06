@@ -23,7 +23,7 @@ const AdminGallery = () => {
   // Fetch gallery items
   const fetchGallery = async () => {
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/gallery.php");
+      const res = await fetch("https://upstrive.xo.je/backend/gallery.php");
       const result = await res.json();
       if (result.success) {
         setGallery(result.gallery);
@@ -50,7 +50,7 @@ const AdminGallery = () => {
     data.append("file", formData.file);
 
     try {
-      const res = await fetch("http://localhost/cliantelle_projects/backend/gallery.php", {
+      const res = await fetch("https://upstrive.xo.je/backend/gallery.php", {
         method: "POST",
         body: data,
       });
@@ -73,7 +73,7 @@ const AdminGallery = () => {
     if (!window.confirm("Are you sure you want to delete this item?")) return;
 
     try {
-      const res = await fetch(`http://localhost/cliantelle_projects/backend/gallery.php?id=${id}`, {
+      const res = await fetch(`https://upstrive.xo.je/backend/gallery.php?id=${id}`, {
         method: "DELETE",
       });
       const result = await res.json();
